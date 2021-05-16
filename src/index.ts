@@ -18,7 +18,7 @@ const replaceAndObserveDeep = (node: Node) => {
     if(node instanceof Text) {
         replaceTextNodeValue(node);
         observer.observe(node, { characterData: true });
-    } else if(node.hasChildNodes() && !isIgnoreNodeName(node.nodeName)) {
+    } else if(!isIgnoreNodeName(node.nodeName)) {
         node.childNodes.forEach(replaceAndObserveDeep);
         observer.observe(node, { childList: true });
     }
